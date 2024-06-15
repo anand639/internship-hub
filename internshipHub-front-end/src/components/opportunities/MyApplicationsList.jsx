@@ -11,7 +11,9 @@ const MyApplicationsList = () => {
   useEffect(() => {
     const fetchOpportunities = async () => {
       const res = await api.get("/opportunities/my-applications");
-      setApplications(res.data?.data?.applicants);
+      if (res?.data?.data?.applicants) {
+        setApplications(res.data?.data?.applicants);
+      }
     };
 
     fetchOpportunities();

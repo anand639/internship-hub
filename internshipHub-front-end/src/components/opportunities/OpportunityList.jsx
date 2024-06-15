@@ -10,7 +10,9 @@ const OpportunityList = () => {
   useEffect(() => {
     const fetchOpportunities = async () => {
       const res = await api.get("/opportunities");
-      setOpportunities(res.data?.data);
+      if (res?.data?.data) {
+        setOpportunities(res?.data?.data);
+      }
     };
 
     fetchOpportunities();
